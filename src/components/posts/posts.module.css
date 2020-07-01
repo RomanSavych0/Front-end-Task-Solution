@@ -1,0 +1,27 @@
+.postsWrapper {
+    max-width: 825px;
+    margin: 0 auto;
+}
+
+.postItem {
+    margin: 12px 0;
+    background-color: white;
+}
+
+.postsContainer {
+    background: whitesmoke;
+    border-radius: 10px;
+    padding: 25px 10px 45px;
+    min-width: 32em;
+    margin: 0 auto;
+    max-width: 1800px;
+}
+
+.postText {
+    color: black;
+
+}
+
+a {
+    text-decoration: none;
+}
