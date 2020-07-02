@@ -1,21 +1,15 @@
-.navbarWrapper{
-background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    height: 150px;
 
-}
 .navbarItem span{
 font-size: 2em;
     padding: 10px;
-}
-a.active{
-color: gold;
 }
 .navbarItem a {
     text-decoration: none;
     color: white;
     cursor: pointer;
 
+}
+
+.navbarItem a.active {
+    color: gold;
 }

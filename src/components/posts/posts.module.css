@@ -4,8 +4,9 @@
 }
 
 .postItem {
-    margin: 12px 0;
+    margin: 0 auto;
     background-color: white;
+    width: 80%;
 }
 
 .postsContainer {
@@ -17,11 +18,20 @@
     max-width: 1800px;
 }
 
+.textWrapper {
+    padding: 10px;
+    margin: 30px;
+}
+
 .postText {
     color: black;
-
 }
 
 a {
     text-decoration: none;
+}
+
+.paperContainer {
+    width: 80%;
+
 }
