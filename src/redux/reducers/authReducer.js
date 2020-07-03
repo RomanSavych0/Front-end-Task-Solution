@@ -6,14 +6,15 @@ const SING_IN_WITH_USER_ACCOUNT = 'SIGN-IN-WITH-USER-ACCOUNT';
 const SING_OUT = 'SIGN-OUT';
 let initialState = {
     email: '',
-    hasAccount: false
+    hasAccount: false,
+    password: ''
 };
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case  SING_IN_WITH_GOOGLE:
             return {...state, email: action.email, hasAccount: true};
         case SING_IN_WITH_USER_ACCOUNT:
-            return {...state, email: action.email, hasAccount: true};
+            return {...state, email: action.email, password: action.password, hasAccount: true};
         case SING_OUT:
             return {...state, hasAccount: false};
         default:
@@ -22,8 +23,8 @@ const authReducer = (state = initialState, action) => {
 
 };
 
-export const singInWithUserAccountAC = (email) => {
-    return ({type: SING_IN_WITH_USER_ACCOUNT, email})
+export const singInWithUserAccountAC = (email, password) => {
+    return ({type: SING_IN_WITH_USER_ACCOUNT, email, password})
 
 
 };
@@ -37,7 +38,7 @@ export const signInWithGoogleAC = (email) => {
 
 export const singInWithUserAccount = (email, password) => (dispatch) => {
     signInWithUserAccountAPI(email, password).then(response => {
-        dispatch(singInWithUserAccountAC(response.user.email));
+        dispatch(singInWithUserAccountAC(response.user.email, password));
     }).catch(error => toast.error(error.toString()))
 };
 export const signInWithGoogle = () => (dispatch) => {

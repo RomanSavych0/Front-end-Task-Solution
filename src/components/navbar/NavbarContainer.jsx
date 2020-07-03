@@ -5,7 +5,6 @@ import {signOut} from "../../redux/reducers/authReducer";
 
 class NavbarContainer extends React.Component {
     componentDidMount() {
-        console.log(this.props.isAuth);
     }
 
     render() {

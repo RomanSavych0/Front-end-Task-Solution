@@ -2,20 +2,17 @@ import {getPostsAPI} from "../../api/api";
 
 const SET_POSTS = 'SET-POSTS';
 const SET_PAGE = 'SET-PAGE';
-const TOGGLE_IS_FETCING = 'TOGGLE-IS-FETCHING';
 let initialState = {
 
     posts: [],
     pageNumber: 1,
-    isFetching: false
 
 };
 const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_POSTS:
             return {...state, posts: state.posts.concat(action.posts)};
-        case TOGGLE_IS_FETCING:
-            return {...state, isFetching: action.isFetching};
+
         case SET_PAGE:
             return {...state, pageNumber: action.pageNumber};
 
@@ -26,18 +23,12 @@ const postsReducer = (state = initialState, action) => {
 export const setPostsAC = (page, posts) => {
     return {type: SET_POSTS, posts}
 };
-export const toggleIsFetchingAC = (isFetching) => {
-    return {type: TOGGLE_IS_FETCING, isFetching}
 
-};
 export const getPosts = (page = 1) =>
     (dispatch) => {
-        console.log("work");
-        dispatch(toggleIsFetchingAC(true));
         getPostsAPI(page).then(
             response => {
                 if (response.ok) {
-                    dispatch(toggleIsFetchingAC(false));
                     return response.text();
                 }
                 return response.text().then(err => {
@@ -51,7 +42,6 @@ export const getPosts = (page = 1) =>
             .then(data => {
                 let dataJson = JSON.parse(data);
                 let dataArray = dataJson.response.docs;
-                console.log(dataArray);
                 let newArray = dataArray.map(i => {
                     return {
                         headline: i.headline.main,

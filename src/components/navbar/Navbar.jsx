@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 
 export let Navbar = (props) => {
     const classes = useStyles();
-
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -55,40 +54,6 @@ export let Navbar = (props) => {
         </div>
     );
 };
-
-
-// export let Navbar = (props) => {
-//     return (<div>
-//             <div className={classes.navbarItem}>
-//                 <span>
-//                      <NavLink to="/posts" activeClassName={classes.active}>Posts</NavLink>
-//                     </span>
-//             </div>
-//             <div className={classes.navbarItem}>
-//                 <NavLink to="/login" activeClassName={classes.active}>
-//                     {props.isAuth ?
-//                         (<span>
-//                                 {props.email}
-//                             </span>
-//                         )
-//                         :
-//                         (
-//                             <span>
-//                                 Login
-//                             </span>
-//
-//                         )
-//
-//                     }
-//
-//                 </NavLink>
-//
-//
-//             </div>
-//         </div>
-//
-//     )
-// };
 
 
 export default Navbar;

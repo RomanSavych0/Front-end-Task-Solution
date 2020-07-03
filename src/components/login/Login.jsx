@@ -38,6 +38,8 @@ class Login extends React.Component {
 
 
     componentDidMount() {
+        console.log(this.props.email);
+        this.setState({email: this.props.email})
     }
 
     render() {

@@ -1,15 +1,12 @@
 
-.navbarItem span{
-font-size: 2em;
+.navbarItem span {
+    font-size: 2em;
     padding: 10px;
 }
+
 .navbarItem a {
     text-decoration: none;
     color: white;
     cursor: pointer;
 
-}
-
-.navbarItem a.active {
-    color: gold;
 }
