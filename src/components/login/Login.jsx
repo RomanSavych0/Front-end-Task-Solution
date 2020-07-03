@@ -30,10 +30,6 @@ class Login extends React.Component {
     signIn = () => {
         const {email, password} = this.state;
         this.props.singInWithUserAccount(email, password);
-        localStorage.setItem('email', email);
-        localStorage.setItem('password', password);
-
-
         this.setState({hasAccount: this.props.hasAccount})
     };
     signUp = () => {
@@ -44,10 +40,8 @@ class Login extends React.Component {
 
 
     componentDidMount() {
-        const email = localStorage.getItem('email');
-        const password = localStorage.getItem('password');
-        this.props.singInWithUserAccount(email, password);
-        this.setState({email: this.props.email})
+
+
     }
 
     render() {
@@ -114,6 +108,7 @@ class Login extends React.Component {
 const mapStateToProps = (state) => {
     return {
         email: state.loginPage.email,
+        password: state.loginPage.password,
         hasAccount: state.loginPage.hasAccount,
     }
 };

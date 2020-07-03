@@ -40,6 +40,8 @@ export const singInWithUserAccount = (email, password) => (dispatch) => {
     signInWithUserAccountAPI(email, password).then(response => {
         dispatch(singInWithUserAccountAC(response.user.email, password));
     }).catch(error => toast.error(error.toString()))
+
+
 };
 export const signInWithGoogle = () => (dispatch) => {
 
