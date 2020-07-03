@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {signInWithGoogle, singInWithUserAccount} from "../../redux/reducers/authReducer";
+import {signInWithGoogle, signInWithUserAccount} from "../../redux/reducers/authReducer";
 import {compose} from "redux";
 import classes from './Login.module.css'
 import {createAccountAPI} from "../../api/api";
@@ -28,15 +28,17 @@ class Login extends React.Component {
 
         this.setState({[id]: value});
     };
-
-
-    signIn = () => {
-        const {email, password, rememberMe} = this.state;
+    setLocalStorage = (rememberMe, email, password) => {
         localStorage.setItem('rememberMe', rememberMe);
         localStorage.setItem('email', rememberMe ? email : '');
         localStorage.setItem('password', rememberMe ? password : '');
 
-        this.props.singInWithUserAccount(email, password);
+    };
+
+    signIn = () => {
+        const {email, password, rememberMe} = this.state;
+        this.setLocalStorage(rememberMe, email, password);
+        this.props.signInWithUserAccount(email, password);
         this.setState({hasAccount: this.props.hasAccount})
     };
     signUp = () => {
@@ -51,7 +53,6 @@ class Login extends React.Component {
         const rememberMe = localStorage.getItem('rememberMe') === 'true';
         const email = rememberMe ? localStorage.getItem('email') : '';
         const password = rememberMe ? localStorage.getItem('password') : '';
-
         this.setState({email, password, rememberMe});
 
     }
@@ -134,4 +135,4 @@ const mapStateToProps = (state) => {
         hasAccount: state.loginPage.hasAccount,
     }
 };
-export default compose(connect(mapStateToProps, {singInWithUserAccount, signInWithGoogle}))(Login)
+export default compose(connect(mapStateToProps, {signInWithUserAccount, signInWithGoogle}))(Login)

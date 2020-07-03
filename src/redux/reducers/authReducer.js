@@ -1,9 +1,9 @@
 import {createAccountAPI, signInWithGoogleAPI, signInWithUserAccountAPI, singOuthAPI} from "../../api/api";
 import {toast} from "react-toastify";
 
-const SING_IN_WITH_GOOGLE = 'SIGN-IN-WITH-GOOGLE';
-const SING_IN_WITH_USER_ACCOUNT = 'SIGN-IN-WITH-USER-ACCOUNT';
-const SING_OUT = 'SIGN-OUT';
+const SIGN_IN_WITH_GOOGLE = 'SIGN-IN-WITH-GOOGLE';
+const SIGN_IN_WITH_USER_ACCOUNT = 'SIGN-IN-WITH-USER-ACCOUNT';
+const SIGN_OUT = 'SIGN-OUT';
 let initialState = {
     email: '',
     hasAccount: false,
@@ -11,11 +11,11 @@ let initialState = {
 };
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case  SING_IN_WITH_GOOGLE:
+        case  SIGN_IN_WITH_GOOGLE:
             return {...state, email: action.email, hasAccount: true};
-        case SING_IN_WITH_USER_ACCOUNT:
+        case SIGN_IN_WITH_USER_ACCOUNT:
             return {...state, email: action.email, password: action.password, hasAccount: true};
-        case SING_OUT:
+        case SIGN_OUT:
             return {...state, hasAccount: false};
         default:
             return state
@@ -23,22 +23,22 @@ const authReducer = (state = initialState, action) => {
 
 };
 
-export const singInWithUserAccountAC = (email, password) => {
-    return ({type: SING_IN_WITH_USER_ACCOUNT, email, password})
+export const signInWithUserAccountAC = (email, password) => {
+    return ({type: SIGN_IN_WITH_USER_ACCOUNT, email, password})
 
 
 };
-export const singOutAC = () => {
-    return ({type: SING_OUT})
+export const signOutAC = () => {
+    return ({type: SIGN_OUT})
 };
 export const signInWithGoogleAC = (email) => {
-    return ({type: SING_IN_WITH_GOOGLE, email})
+    return ({type: SIGN_IN_WITH_GOOGLE, email})
 
 };
 
-export const singInWithUserAccount = (email, password) => (dispatch) => {
+export const signInWithUserAccount = (email, password) => (dispatch) => {
     signInWithUserAccountAPI(email, password).then(response => {
-        dispatch(singInWithUserAccountAC(response.user.email, password));
+        dispatch(signInWithUserAccountAC(response.user.email, password));
     }).catch(error => toast.error(error.toString()))
 
 
@@ -51,7 +51,7 @@ export const signInWithGoogle = () => (dispatch) => {
 };
 export const signOut = () => (dispatch) => {
     singOuthAPI();
-    dispatch(singOutAC());
+    dispatch(signOutAC());
 };
 
 export default authReducer;
