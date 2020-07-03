@@ -16,19 +16,26 @@ class Login extends React.Component {
         this.state = {
             email: '',
             password: '',
-            hasAccount: false
+            hasAccount: false,
+
+            rememberMe: false
         }
 
     }
 
+
     handleChange = ({target: {value, id}}) => {
 
-
         this.setState({[id]: value});
-
     };
+
+
     signIn = () => {
-        const {email, password} = this.state;
+        const {email, password, rememberMe} = this.state;
+        localStorage.setItem('rememberMe', rememberMe);
+        localStorage.setItem('email', rememberMe ? email : '');
+        localStorage.setItem('password', rememberMe ? password : '');
+
         this.props.singInWithUserAccount(email, password);
         this.setState({hasAccount: this.props.hasAccount})
     };
@@ -40,7 +47,12 @@ class Login extends React.Component {
 
 
     componentDidMount() {
+        console.log(localStorage.getItem('rememberMe'));
+        const rememberMe = localStorage.getItem('rememberMe') === 'true';
+        const email = rememberMe ? localStorage.getItem('email') : '';
+        const password = rememberMe ? localStorage.getItem('password') : '';
 
+        this.setState({email, password, rememberMe});
 
     }
 
@@ -64,6 +76,7 @@ class Login extends React.Component {
                                    className={classes.emailInput}
                                    onChange={this.handleChange}
                                    id="email"
+                                   value={this.state.email}
                             />
 
                             <Input defaultValue="" inputProps={{'aria-label': 'description'}}
@@ -71,7 +84,10 @@ class Login extends React.Component {
                                    type="password"
                                    id="password"
                                    className={classes.passwordInput}
+                                   value={this.state.password}
+
                                    onChange={this.handleChange}
+
                             />
 
 
@@ -84,7 +100,13 @@ class Login extends React.Component {
                                         style={{marginLeft: "6px"}}>
                                     Sign up
                                 </Button>
+                                <label>
 
+                                    <input id="rememberMe" name="rememberMe" checked={this.state.rememberMe}
+                                           onChange={this.handleChange}
+                                           type="checkbox"/> Remember me
+
+                                </label>
                                 <div className={classes.googleBtn} onClick={this.props.signInWithGoogle}>
                                     <div className={classes.googleIconWrapper}>
                                         <img className={classes.googleIcon}
