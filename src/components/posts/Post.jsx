@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from './posts.module.css'
-import Paper from "@material-ui/core/Paper";
+import classes from './posts.module.css';
+import Paper from '@material-ui/core/Paper';
 
 let Post = (props) => {
     return (

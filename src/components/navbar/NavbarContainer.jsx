@@ -1,14 +1,10 @@
 import React from 'react'
-import Navbar from "./Navbar";
-import {connect} from "react-redux";
-import {signOut} from "../../redux/reducers/authReducer";
+import Navbar from './Navbar';
+import {connect} from 'react-redux';
+import {signOut} from '../../redux/reducers/authReducer';
 
 class NavbarContainer extends React.Component {
-    componentDidMount() {
-    }
-
     render() {
-
         return (
             <Navbar isAuth={this.props.isAuth} email={this.props.email} signOut={this.props.signOut}/>
         )

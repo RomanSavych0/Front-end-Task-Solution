@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
-import PostsContainer from "./components/posts/PostsContainer";
-import Login from "./components/login/Login";
-import NavbarContainer from "./components/navbar/NavbarContainer";
-import {ToastContainer} from "react-toastify";
+import {BrowserRouter, Route} from 'react-router-dom';
+import PostsContainer from './components/posts/PostsContainer';
+import Login from './components/login/Login';
+import NavbarContainer from './components/navbar/NavbarContainer';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {

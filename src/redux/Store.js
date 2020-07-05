@@ -1,7 +1,7 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import thunkMiddleware  from "redux-thunk"
-import postsReducer from "./reducers/postsReducer";
-import authReducer from "./reducers/authReducer";
+import {applyMiddleware, combineReducers, createStore} from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import postsReducer from './reducers/postsReducer';
+import authReducer from './reducers/authReducer';
 let reducers = combineReducers(
     {
         postsPage: postsReducer,

@@ -1,5 +1,5 @@
-import * as firebase from "firebase";
-import {toast} from "react-toastify";
+import * as firebase from 'firebase';
+import {toast} from 'react-toastify';
 
 export let getPostsAPI = (page) => {
     const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=20200101&end_date=20200102&facet=true&facet_fields=day_of_week&facet" +

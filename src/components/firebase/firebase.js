@@ -12,15 +12,12 @@ const config = {
     singInFlow: "popup",
     singInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-
     ],
-
 };
 
 class Firebase {
     constructor() {
         app.initializeApp(config);
-
         this.auth = app.auth();
     }
 }

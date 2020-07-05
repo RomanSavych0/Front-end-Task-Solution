@@ -1,4 +1,4 @@
-import {createAccountAPI, signInWithGoogleAPI, signInWithUserAccountAPI, singOuthAPI} from "../../api/api";
+import {signInWithGoogleAPI, signInWithUserAccountAPI, singOuthAPI} from "../../api/api";
 import {toast} from "react-toastify";
 
 const SIGN_IN_WITH_GOOGLE = 'SIGN-IN-WITH-GOOGLE';
@@ -44,7 +44,6 @@ export const signInWithUserAccount = (email, password) => (dispatch) => {
 
 };
 export const signInWithGoogle = () => (dispatch) => {
-
     signInWithGoogleAPI().then(response => {
         dispatch(signInWithGoogleAC(response.user.email))
     }).catch(error => toast.error(error.toString()))

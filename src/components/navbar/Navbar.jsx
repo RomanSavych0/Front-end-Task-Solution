@@ -45,9 +45,10 @@ export let Navbar = (props) => {
                         <Button onClick={props.signOut}>
                             Sign out
                         </Button>
-                    ) : (
+                        ) :
+                        (
                         <div></div>
-                    )
+                        )
                     }
                 </Toolbar>
             </AppBar>

@@ -12,10 +12,8 @@ const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_POSTS:
             return {...state, posts: state.posts.concat(action.posts)};
-
         case SET_PAGE:
             return {...state, pageNumber: action.pageNumber};
-
         default:
             return state;
     }
